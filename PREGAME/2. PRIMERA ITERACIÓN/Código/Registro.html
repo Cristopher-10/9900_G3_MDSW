@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Beautiful Nails</title>
+  <style>
+    body {
+      text-align: center;
+      padding-top: 50px;
+    }
+
+    h1 {
+      font-size: 24px;
+    }
+
+    form {
+      display: inline-block;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 200px;
+      padding: 5px;
+    }
+
+    input[type="button"] {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+  </style>
+  <script>
+    function registrarUsuario() {
+      var nuevoUsuario = document.getElementById("nuevo-usuario").value;
+      var nuevaContraseña = document.getElementById("nueva-contraseña").value;
+
+      // Aquí puedes realizar la lógica para guardar el nuevo usuario y contraseña
+      // Por ejemplo, podrías enviar los datos a un servidor para su registro
+
+      alert("Usuario registrado exitosamente.");
+
+      // Redirecciona a la página de ingreso de credenciales
+      window.location.href = "Validacion.html";
+    }
+  </script>
+</head>
+<body>
+  <h1>Beautiful Nails</h1>
+  <h2>Registro de nuevo usuario</h2>
+  <form>
+    <label for="nuevo-usuario">Nuevo usuario:</label>
+    <input type="text" id="nuevo-usuario" name="nuevo-usuario" required><br><br>
+
+    <label for="nueva-contraseña">Nueva contraseña:</label>
+    <input type="password" id="nueva-contraseña" name="nueva-contraseña" required><br><br>
+
+    <input type="button" value="Registrarse" onclick="registrarUsuario()">
+  </form>
+</body>
+</html>
