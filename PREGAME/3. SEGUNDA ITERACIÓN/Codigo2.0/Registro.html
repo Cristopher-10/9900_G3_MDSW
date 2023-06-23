@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Beautiful Nails</title>
+  <style>
+    body {
+      text-align: center;
+      padding-top: 50px;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      font-size: 24px;
+    }
+
+    form {
+      display: inline-block;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 200px;
+      padding: 5px;
+      border: 1px solid #dddddd;
+    }
+
+    input[type="submit"] {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4caf50;
+      color: #ffffff;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Beautiful Nails</h1>
+  <h2>Registro de nuevo usuario</h2>
+  <form method="post" action="registro.php">
+    <label for="nuevo-usuario">Nuevo usuario:</label>
+    <input type="text" id="nuevo-usuario" name="nuevo-usuario" required><br><br>
+
+    <label for="nueva-contraseña">Nueva contraseña:</label>
+    <input type="password" id="nueva-contraseña" name="nueva-contraseña" required><br><br>
+
+    <input type="submit" value="Registrarse">
+  </form>
+</body>
+</html>

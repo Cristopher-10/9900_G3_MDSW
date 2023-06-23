@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Beautiful Nails</title>
+  <style>
+    body {
+      text-align: center;
+      padding-top: 50px;
+      font-family: Arial, sans-serif;
+      background-color: #fde9e9; /* Color rosa suave */
+    }
+
+    h1 {
+      font-size: 28px;
+      color: #333;
+    }
+
+    h2 {
+      font-size: 20px;
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    form {
+      display: inline-block;
+      text-align: left;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      color: #333;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 200px;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    input[type="submit"] {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    hr {
+      margin-top: 30px;
+    }
+
+    .secondary-link {
+      color: #666;
+      text-decoration: underline; /* Subrayado enlaces */
+      margin-top: 15px;
+      display: inline-block;
+    }
+
+    .secondary-link:hover {
+      text-decoration: none; /* Quitar subrayado al pasar el cursor */
+    }
+
+    /* Estilo para la animación de transición */
+    .page-transition {
+      opacity: 0;
+      transition: opacity 0.5s ease-out;
+    }
+  </style>
+  <script>
+    // Función para agregar una transición antes de redirigir
+    function redirectToPage(event, url) {
+      event.preventDefault(); // Prevenir la acción predeterminada del navegador
+
+      // Agregar una clase CSS para animar la transición
+      document.body.classList.add('page-transition');
+
+      // Esperar un tiempo suficiente para que la animación se complete
+      setTimeout(function() {
+        window.location.href = url; // Redirigir a la nueva página
+      }, 1000); // Tiempo de espera en milisegundos (1 segundo en este ejemplo)
+    }
+  </script>
+</head>
+<body>
+  <h1>Beautiful Nails</h1>
+  <h2>Login</h2>
+  <form method="POST" action="login.php">
+    <label for="usuario">Usuario:</label>
+    <input type="text" id="usuario" name="usuario" required><br>
+
+    <label for="contraseña">Contraseña:</label>
+    <input type="password" id="contraseña" name="contraseña" required><br>
+
+    <input type="submit" value="Ingresar">
+
+    <hr>
+
+    <h2>¿No tienes una cuenta?</h2>
+    <a href="Registro.html" onclick="redirectToPage(event, 'Registro.html');" class="secondary-link">Registrarse</a>
+    
+    <br> <!-- Agregar un espacio separador entre los botones -->
+    
+    <a href="recuperar_contraseña.html" onclick="redirectToPage(event, 'recuperar_contraseña.html');" class="secondary-link">Olvidé mi contraseña</a>
+  </form>
+</body>
+</html>

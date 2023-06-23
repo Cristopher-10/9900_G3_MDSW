@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Recuperación de Contraseña</title>
+  <style>
+    body {
+      text-align: center;
+      padding-top: 50px;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      font-size: 24px;
+    }
+
+    form {
+      display: inline-block;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 200px;
+      padding: 5px;
+      border: 1px solid #dddddd;
+    }
+
+    input[type="submit"] {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4caf50;
+      color: #ffffff;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Recuperación de Contraseña</h1>
+  <form method="POST" action="recuperar_contraseña.php">
+    <label for="usuario">Nombre de usuario:</label>
+    <input type="text" id="usuario" name="usuario" required><br><br>
+
+    <label for="codigo">Código de seguridad:</label>
+    <input type="text" id="codigo" name="codigo" required><br><br>
+
+    <label for="nueva-contraseña">Nueva contraseña:</label>
+    <input type="password" id="nueva-contraseña" name="nueva-contraseña" required><br><br>
+
+    <input type="submit" value="Guardar nueva contraseña">
+  </form>
+</body>
+</html>

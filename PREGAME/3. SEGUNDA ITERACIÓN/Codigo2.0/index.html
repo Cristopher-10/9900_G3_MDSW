@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Registro de Clientes</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffe4e1;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #ffffff;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    button {
+      background-color: #ff69b4;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      margin-bottom: 10px;
+      border-radius: 5px; /* Agregado: esquinas redondeadas */
+      display: block; /* Agregado: centrar horizontalmente */
+      margin: 0 auto; /* Agregado: centrar horizontalmente */
+    }
+
+    form {
+      display: none;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      color: #333;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #dddddd;
+      border-radius: 3px;
+      margin-bottom: 15px;
+    }
+
+    .submit-btn {
+      background-color: #ff69b4;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px; /* Agregado: esquinas redondeadas */
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin-top: 10px; /* Agregado: separación de la lista de clientes */
+    }
+
+    li {
+      padding: 10px;
+      border-bottom: 1px solid #dddddd;
+      margin-bottom: 10px;
+    }
+
+    .delete-btn {
+      background-color: #f44336;
+      color: #ffffff;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      float: right;
+      border-radius: 5px; /* Agregado: esquinas redondeadas */
+    }
+
+    .logout-link {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background-color: #f00;
+      color: #fff;
+      padding: 10px;
+      text-decoration: none;
+    }
+  </style>
+  <script>
+    function showRegistrationForm() {
+      var form = document.getElementById("registration-form");
+      if (form.style.display === "none") {
+        form.style.display = "block";
+      } else {
+        form.style.display = "none";
+      }
+    }
+
+    function registerClient() {
+      var name = document.getElementById("name").value;
+      var address = document.getElementById("address").value;
+      var phone = document.getElementById("phone").value;
+      var description = document.getElementById("description").value;
+
+      // Enviar la solicitud al servidor para registrar al cliente
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "save_client.php", true);
+      xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+          var clientData = JSON.parse(xhr.responseText);
+          addClientToList(clientData);
+        }
+      };
+      xhr.send("name=" + encodeURIComponent(name) +
+               "&address=" + encodeURIComponent(address) +
+               "&phone=" + encodeURIComponent(phone) +
+               "&description=" + encodeURIComponent(description));
+    }
+
+    function addClientToList(clientData) {
+      var list = document.getElementById("client-list");
+      var listItem = document.createElement("li");
+      listItem.setAttribute("data-client-id", clientData.id);
+      listItem.innerHTML =
+        "<strong>Nombre:</strong> " + clientData.name + "<br>" +
+        "<strong>Dirección:</strong> " + clientData.address + "<br>" +
+        "<strong>Teléfono:</strong> " + clientData.phone + "<br>" +
+        "<strong>Descripción de la cita:</strong> " + clientData.description +
+        '<button class="delete-btn" onclick="deleteClient(this)">Eliminar</button>';
+
+      list.appendChild(listItem);
+
+      // Limpia los campos del formulario
+      document.getElementById("registration-form").reset();
+
+      // Oculta el formulario de registro
+      document.getElementById("registration-form").style.display = "none";
+    }
+
+    function deleteClient(element) {
+      var listItem = element.parentNode;
+      var list = listItem.parentNode;
+      var clientID = listItem.getAttribute("data-client-id");
+
+      // Enviar la solicitud al servidor para eliminar al cliente
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "delete_client.php", true);
+      xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+          if (xhr.responseText === "success") {
+            list.removeChild(listItem);
+          }
+        }
+      };
+      xhr.send("id=" + encodeURIComponent(clientID));
+    }
+
+    function getClients() {
+      // Obtener la lista de clientes desde el servidor
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", "get_clients.php", true);
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+          var clientDataList = JSON.parse(xhr.responseText);
+          populateClientList(clientDataList);
+        }
+      };
+      xhr.send();
+    }
+
+    function populateClientList(clientDataList) {
+      var list = document.getElementById("client-list");
+      list.innerHTML = "";
+
+      for (var i = 0; i < clientDataList.length; i++) {
+        var clientData = clientDataList[i];
+        var listItem = document.createElement("li");
+        listItem.setAttribute("data-client-id", clientData.id);
+        listItem.innerHTML =
+          "<strong>Nombre:</strong> " + clientData.name + "<br>" +
+          "<strong>Dirección:</strong> " + clientData.address + "<br>" +
+          "<strong>Teléfono:</strong> " + clientData.phone + "<br>" +
+          "<strong>Descripción de la cita:</strong> " + clientData.description +
+          '<button class="delete-btn" onclick="deleteClient(this)">Eliminar</button>';
+
+        list.appendChild(listItem);
+      }
+    }
+
+    // Obtener la lista de clientes al cargar la página
+    window.onload = function() {
+      getClients();
+    };
+  </script>
+</head>
+<body>
+  <div class="container">
+    <a href="Principal.html" class="logout-link">Cerrar Sesión</a>
+    <h1>Registro de Clientes</h1>
+
+    <button onclick="showRegistrationForm()">Nuevo Cliente</button>
+
+    <form id="registration-form" onsubmit="event.preventDefault(); registerClient();">
+      <label for="name">Nombre:</label>
+      <input type="text" id="name" required>
+
+      <label for="address">Dirección:</label>
+      <input type="text" id="address" required>
+
+      <label for="phone">Teléfono:</label>
+      <input type="tel" id="phone" required>
+
+      <label for="description">Descripción de la cita:</label>
+      <textarea id="description" rows="4" required></textarea>
+
+      <button type="submit" class="submit-btn">Registrar</button>
+    </form>
+
+    <ul id="client-list"></ul>
+  </div>
+</body>
+</html>
