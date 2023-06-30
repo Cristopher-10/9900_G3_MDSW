@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Recuperación de Contraseña</title>
+  <style>
+    body {
+      text-align: center;
+      padding-top: 50px;
+      font-family: Arial, sans-serif;
+      background-color: #fde9e9; /* Color rosa suave */
+    }
+
+    h1 {
+      font-size: 28px;
+      color: #333;
+    }
+
+    form {
+      display: inline-block;
+      text-align: left;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      color: #333;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 200px;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    input[type="submit"] {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    .error-message {
+      display: none;
+      color: red;
+      font-size: 12px;
+    }
+
+    .login-link {
+      text-decoration: underline;
+      color: blue;
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+      const usuarioInput = document.getElementById('usuario');
+      const codigoInput = document.getElementById('codigo');
+      const contraseñaInput = document.getElementById('nueva-contraseña');
+      const usuarioErrorMessage = document.createElement('div');
+      const codigoErrorMessage = document.createElement('div');
+      const contraseñaErrorMessage = document.createElement('div');
+      usuarioErrorMessage.className = 'error-message';
+      codigoErrorMessage.className = 'error-message';
+      contraseñaErrorMessage.className = 'error-message';
+      usuarioInput.parentNode.insertBefore(usuarioErrorMessage, usuarioInput.nextSibling);
+      codigoInput.parentNode.insertBefore(codigoErrorMessage, codigoInput.nextSibling);
+      contraseñaInput.parentNode.insertBefore(contraseñaErrorMessage, contraseñaInput.nextSibling);
+
+      usuarioInput.addEventListener('input', (event) => {
+        const value = event.target.value;
+        const regex = /^[a-zA-Z0-9]+$/;
+        if (!regex.test(value)) {
+          usuarioInput.value = value.replace(/[^a-zA-Z0-9]/g, ''); // Eliminar caracteres no permitidos
+          usuarioErrorMessage.style.display = 'block';
+          usuarioErrorMessage.textContent = 'Solo se permiten letras y números.';
+        } else {
+          usuarioErrorMessage.style.display = 'none';
+        }
+      });
+
+      codigoInput.addEventListener('input', (event) => {
+        const value = event.target.value;
+        const regex = /^[a-zA-Z0-9]+$/;
+        if (!regex.test(value)) {
+          codigoInput.value = value.replace(/[^a-zA-Z0-9]/g, ''); // Eliminar caracteres no permitidos
+          codigoErrorMessage.style.display = 'block';
+          codigoErrorMessage.textContent = 'Solo se permiten letras y números.';
+        } else {
+          codigoErrorMessage.style.display = 'none';
+        }
+      });
+
+      contraseñaInput.addEventListener('input', (event) => {
+        const value = event.target.value;
+        const maxLength = 15;
+        if (value.length > maxLength) {
+          contraseñaInput.value = value.slice(0, maxLength); // Limitar la longitud de la contraseña
+          contraseñaErrorMessage.style.display = 'block';
+          contraseñaErrorMessage.textContent = 'Límite de caracteres alcanzado (máximo 15).';
+        } else {
+          contraseñaErrorMessage.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <h1>Recuperación de Contraseña</h1>
+  <form method="POST" action="recuperar_contraseña.php">
+    <label for="usuario">Nombre de usuario:</label>
+    <input type="text" id="usuario" name="usuario" required>
+    <div id="usuario-error" class="error-message"></div><br>
+
+    <label for="codigo">Código de seguridad:</label>
+    <input type="text" id="codigo" name="codigo" required>
+    <div id="codigo-error" class="error-message"></div><br>
+
+    <label for="nueva-contraseña">Nueva contraseña:</label>
+    <input type="password" id="nueva-contraseña" name="nueva-contraseña" required>
+    <div id="contraseña-error" class="error-message"></div><br>
+
+    <input type="submit" value="Guardar nueva contraseña">
+  </form>
+
+  <p class="login-link"><a href="Principal.html">¿Ya tienes cuenta?</a></p>
+</body>
+</html>
