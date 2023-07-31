@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Menú Lateral con CSS</title>
+   
+    <link rel="stylesheet" href="estilos.css">
+    
+    <script>
+    function verificarDisponibilidad() {
+      // Obtener los valores del formulario
+      var nombre = document.getElementById('nombre').value;
+      var apellido = document.getElementById('apellido').value;
+      var telefono = document.getElementById('telefono').value;
+
+      // Expresión regular para permitir solo letras y espacios
+      var regex = /^[a-zA-Z\s]*$/;
+
+      // Validar el campo de nombre
+      if (!regex.test(nombre)) {
+        mostrarMensajeError('nombre');
+        return false; // Evitar que se envíe el formulario
+      }
+
+      // Validar el campo de apellido
+      if (!regex.test(apellido)) {
+        mostrarMensajeError('apellido');
+        return false; // Evitar que se envíe el formulario
+      }
+
+      // Validar el campo de teléfono
+      var regexNumeros = /^[0-9]+$/;
+      if (!regexNumeros.test(telefono)) {
+        mostrarMensajeError('telefono', 'Solo se permiten números.');
+        return false; // Evitar que se envíe el formulario
+      } else if (telefono.length !== 10) {
+        mostrarMensajeError('telefono', 'El número de teléfono debe tener 10 dígitos.');
+        return false; // Evitar que se envíe el formulario
+      }
+
+      return true; // Permitir que se envíe el formulario si los campos son válidos
+    }
+
+    function mostrarMensajeError(campo, mensaje) {
+      var errorElement = document.getElementById(campo + '-error');
+      var campoElement = document.getElementById(campo);
+
+      if (!errorElement) {
+        errorElement = document.createElement('p');
+        errorElement.id = campo + '-error';
+        errorElement.className = 'error-message';
+        errorElement.innerHTML = mensaje;
+
+        campoElement.parentNode.insertBefore(errorElement, campoElement.nextSibling);
+      } else {
+        errorElement.innerHTML = mensaje;
+      }
+
+      campoElement.classList.add('error-input');
+    }
+
+    function quitarMensajeError(campo) {
+      var errorElement = document.getElementById(campo + '-error');
+      var campoElement = document.getElementById(campo);
+
+      if (errorElement) {
+        errorElement.parentNode.removeChild(errorElement);
+      }
+
+      campoElement.classList.remove('error-input');
+    }
+
+    function bloquearCaracteresInvalidos(event) {
+      var key = event.key;
+      var regex = /^[a-zA-Z\s]*$/;
+
+      if (!regex.test(key) && !event.ctrlKey) {
+        event.preventDefault();
+        mostrarMensajeError(event.target.id, 'Solo se permiten letras y espacios.');
+      }
+    }
+
+    function bloquearCaracteresNoNumericos(event) {
+      var key = event.key;
+      var regexNumeros = /^[0-9]+$/;
+
+      if (!regexNumeros.test(key) && !event.ctrlKey) {
+        event.preventDefault();
+        mostrarMensajeError(event.target.id, 'Solo se permiten números.');
+      }
+    }
+  </script>
+</head>
+<body>
+    <div class="titulo">
+            <h1>Registro de clientes</h1>
+            </div>
+    <header class="encabezado">
+        <div class="contenedor">
+            <div class="btn-menu">
+                <label for="btn-menu">☰</label>
+            </div>
+            <div class="logo">
+                <h1>Beautiful Nails</h1>
+            </div>
+            <nav class="menu-principal">
+                <a href="../Principal.html">Salir</a>
+            </nav>
+        </div>
+    </header>
+    <div class="fondo"></div>
+    <!-- Barra lateral -->
+    <input type="checkbox" id="btn-menu">
+    <div class="contenedor-menu">
+        <div class="cont-menu">
+            <nav>
+                <a href="#">Principal</a>
+                <a href="Sformulario.html">Registrar Cliente</a>
+                <a href="Sclientes.html">Clientes</a>
+                <a href="empleados.html">Empleados</a>
+                <a href="codigo.html">Código de Seguridad</a>
+            </nav>
+            <label for="btn-menu">✖️</label>
+        </div>
+    </div>
+    <div class="container">
+        <div class="form-container">
+            <form method="POST" action="guardar_datos.php" onsubmit="return verificarDisponibilidad()" id="formulario">
+                <div class="name-fields">
+
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" required onkeydown="bloquearCaracteresInvalidos(event)" oninput="quitarMensajeError('nombre')">
+                </div>
+                <div class="name-fields2">
+                    <label for="apellido">Apellido:</label>
+                    <input type="text" id="apellido" name="apellido" required onkeydown="bloquearCaracteresInvalidos(event)" oninput="quitarMensajeError('apellido')">
+                    
+                </div>
+    
+
+                <div class="contact-fields">
+  <div>
+    <label for="telefono">Teléfono:</label>
+  </div>
+  <div>
+    <input type="text" id="telefono" name="telefono" required onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.ctrlKey" oninput="quitarMensajeError('telefono')">
+  </div>
+</div>
+<div>
+  <label for="direccion">Dirección:</label>
+  <input type="text" id="direccion" name="direccion" required>
+</div>
+    
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+    
+                <div>
+                    <label for="dia">Día:</label>
+                    <select id="dia" name="dia" required>
+                        <!-- Aquí generamos las opciones del día del mes actual de forma interactiva -->
+                        <script>
+                            var fecha = new Date();
+                            var ultimoDia = new Date(fecha.getFullYear(), fecha.getMonth() + 1, 0).getDate();
+                            var diaActual = fecha.getDate();
+    
+                            for (var i = diaActual; i <= ultimoDia; i++) {
+                                var option = document.createElement('option');
+                                option.value = i;
+                                option.text = i;
+                                document.getElementById('dia').appendChild(option);
+                            }
+                        </script>
+                    </select>
+                </div>
+
+
+                <label for="dia">Hora:</label>
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="hora" value="11am" required>11:00 AM
+                    </label>
+                    <label>
+                        <input type="radio" name="hora" value="12pm">12:00 PM
+                    </label>
+                    <label>
+                        <input type="radio" name="hora" value="1pm">1:00 PM
+                    </label>
+                    <label>
+                        <input type="radio" name="hora" value="2pm">2:00 PM
+                    </label>
+                    <label>
+                        <input type="radio" name="hora" value="3pm">3:00 PM
+                    </label>
+                    <label>
+                        <input type="radio" name="hora" value="4pm">4:00 PM
+                    </label>
+                    <label>
+                        <input type="radio" name="hora" value="5pm">5:00 PM
+                    </label>
+                    <label>
+                        <input type="radio" name="hora" value="6pm">6:00 PM
+                    </label>
+                    <label>
+                        <input type="radio" name="hora" value="7pm">7:00 PM
+                    </label>
+                    <label>
+                    <input type="radio" name="hora" value="8pm">8:00 PM
+                    </label>
+                </div>
+    
+                <input type="submit" class="submit-btn" value="Enviar">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

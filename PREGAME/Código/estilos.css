@@ -1,0 +1,296 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Montserrat+Alternates|Poppins&display=swap');
+
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.fondo {
+	position: fixed;
+	width: 100%;
+	height: 100vh;
+	background: rgb(242, 170, 207);
+	z-index: -1;
+	top: 0;
+	left: 0;
+}
+
+/* Estilos para el encabezado */
+.encabezado {
+	width: 100%;
+	height: 100px;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
+.contenedor {
+	width: 90%;
+	max-width: 1200px;
+	margin: auto;
+}
+
+.contenedor .btn-menu,
+.logo {
+	float: left;
+	line-height: 100px;
+}
+
+.contenedor .btn-menu label {
+	color: #fff;
+	font-size: 25px;
+	cursor: pointer;
+}
+
+.logo h1 {
+	color: #fff;
+	font-weight: 400;
+	font-size: 22px;
+	margin-left: 10px;
+}
+
+.contenedor .menu-principal {
+	float: right;
+	line-height: 100px;
+}
+
+.contenedor .menu-principal a {
+	display: inline-block;
+	padding: 15px;
+	line-height: normal;
+	text-decoration: none;
+	color: #fff;
+	transition: all 0.3s ease;
+	border-bottom: 2px solid transparent;
+	font-size: 15px;
+	margin-right: 5px;
+}
+
+.contenedor .menu-principal a:hover {
+	border-bottom: 2px solid #c7c7c7;
+	padding-bottom: 5px;
+}
+/* Fin de Estilos para el encabezado */
+
+/* Menú lateral */
+#btn-menu {
+	display: none;
+}
+
+.contenedor-menu {
+	position: absolute;
+	background: rgb(255, 149, 232);
+	width: 100%;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	transition: all 500ms ease;
+	opacity: 0;
+	visibility: hidden;
+}
+
+#btn-menu:checked ~ .contenedor-menu {
+	opacity: 1;
+	visibility: visible;
+}
+
+.cont-menu {
+	width: 100%;
+	max-width: 250px;
+	background: #1c1c1c;
+	height: 100vh;
+	position: relative;
+	transition: all 500ms ease;
+	transform: translateX(-100%);
+}
+
+#btn-menu:checked ~ .contenedor-menu .cont-menu {
+	transform: translateX(0%);
+}
+
+.cont-menu nav {
+	transform: translateY(15%);
+}
+
+.cont-menu nav a {
+	display: block;
+	text-decoration: none;
+	padding: 20px;
+	color: #c7c7c7;
+	border-left: 5px solid transparent;
+	transition: all 400ms ease;
+}
+
+.cont-menu nav a:hover {
+	border-left: 5px solid #c7c7c7;
+	background: #1f1f1f;
+}
+
+.cont-menu label {
+	position: absolute;
+	right: 5px;
+	top: 10px;
+	color: #fff;
+	cursor: pointer;
+	font-size: 18px;
+}
+/* Fin de Menú lateral */
+ /* Estilos CSS para la presentación */
+ body {
+	margin: 0;
+	padding: 0;
+	font-family: Arial, sans-serif;
+  }
+
+  .container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+  }
+
+  .form-container {
+	width: 400px;
+	margin: 3cm auto;
+  }
+
+  .form-container h1 {
+	text-align: center;
+	margin-bottom: 20px;
+  }
+
+  .form-container .name-fields {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin-bottom: 20px;
+  }
+
+  .form-container .name-fields input {
+	width: calc(200% - 10px);
+  }
+
+  .form-container .contact-fields {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin-bottom: 10px;
+  }
+
+  .form-container .contact-fields input {
+	width: calc(50% - 5px);
+  }
+
+  .radio-group {
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 10px;
+  }
+
+  .radio-group label {
+	width: 50%;
+  }
+
+  .submit-btn {
+	padding: 10px 20px;
+	background-color: #4CAF50;
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+  }
+
+  .error-input {
+	border: 1px solid red;
+  }
+
+  .error-message {
+	color: red;
+	margin-top: 5px;
+  }
+
+  .titulo{
+	color: white;
+	position: absolute;
+	right: 570px;
+	top: 5px;
+	
+  }
+  /* Estilos generales */
+body {
+	margin: 0;
+	padding: 0;
+	font-family: Arial, sans-serif;
+  }
+  
+  .container {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 20px;
+  }
+  
+  .form-container {
+	background-color: #f4f4f4;
+	padding: 20px;
+	border-radius: 5px;
+  }
+  
+  form {
+	display: grid;
+	gap: 10px;
+  }
+  
+  label {
+	font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  select {
+	width: 100%;
+	padding: 8px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+  }
+  
+  .input-error {
+	border-color: #ff0000;
+  }
+  
+  .error-message {
+	color: #ff0000;
+	font-size: 12px;
+	margin-top: 5px;
+  }
+  
+  .submit-btn {
+	background-color: #4caf50;
+	color: #fff;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+  }
+  
+
+
+.contact-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.name-fields input,
+.contact-fields input {
+  grid-column: span 2;
+}
+
+.contact-fields {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+  }
+

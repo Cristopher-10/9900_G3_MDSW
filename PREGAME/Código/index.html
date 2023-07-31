@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Beautiful Nails</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Montserrat|Montserrat+Alternates|Poppins&display=swap');
+    .image-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1; /* Asegúrate de que el z-index sea mayor que los demás elementos */
+    }
+    *{
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		font-family: 'Montserrat Alternates', sans-serif;
+	}
+    body {
+      text-align: center;
+      padding-top: 50px;
+      font-family: 'Montserrat Alternates', sans-serif;
+      background-color: rgb(242, 170, 207);
+    }
+    body {
+      text-align: center;
+      padding-top: 50px;
+      font-family: Arial, sans-serif;
+      background-color:rgb(242, 170, 207);; /* Color rosa suave */
+    }
+
+
+
+    h1 {
+      font-size: 28px;
+      color: #333;
+    }
+
+    h2 {
+      font-size: 20px;
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    form {
+      display: inline-block;
+      text-align: left;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      color: #333;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 200px;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    input[type="submit"] {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    hr {
+      margin-top: 30px;
+    }
+
+    .secondary-link {
+      color: #666;
+      text-decoration: underline; /* Subrayado enlaces */
+      margin-top: 15px;
+      display: inline-block;
+    }
+
+    .secondary-link:hover {
+      text-decoration: none; /* Quitar subrayado al pasar el cursor */
+    }
+
+    .error-message {
+      color: red;
+      font-size: 12px;
+    }
+
+    /* Estilo para la animación de transición */
+    .page-transition {
+      opacity: 0;
+      transition: opacity 0.5s ease-out;
+    }
+
+    
+      
+
+    .button-container-1 {
+        position: relative;
+        width: 100px;
+        height: 50px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 6vh;
+        overflow: hidden;
+        font-family: 'Lato', sans-serif;
+        font-weight: 300;
+        font-size: 20px;
+        transition: 0.5s;
+        letter-spacing: 1px;
+      }
+      
+      .button-container-1 button {
+        width: 101%;
+        height: 100%;
+        font-family: 'Lato', sans-serif;
+        font-weight: 300;
+        font-size: 20px;
+        letter-spacing: 1px;
+        background: #ff71e0;
+        -webkit-mask: url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/nature-sprite.png");
+        mask: url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/nature-sprite.png");
+        -webkit-mask-size: 2300% 100%;
+        mask-size: 2300% 100%;
+        border: none;
+        color: #ffffff;
+        cursor: pointer;
+        -webkit-animation: ani2 0.7s steps(22) forwards;
+        animation: ani2 0.7s steps(22) forwards;
+      
+        /* Agrega el border-radius */
+        border-radius: 5px;
+      }
+      
+      .button-container-1 button:hover {
+        -webkit-animation: ani 0.7s steps(22) forwards;
+        animation: ani 1s steps(22) forwards;
+      }
+      
+      .button-container-1 button,
+      .button-container-1 button:focus,
+      .button-container-1 button:active {
+        outline: none;
+        border: 1px solid;
+      
+        /* Agrega el border-radius al borde */
+        border-radius: 5px;
+      }
+      .button-container-2 {
+        position: relative;
+        width: 100px;
+        height: 50px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: calc(7vh - 1.5cm); /* Se resta 1cm a la posición vertical actual */
+        overflow: hidden;
+        font-family: 'Lato', sans-serif;
+        font-weight: 300;
+        transition: 0.5s;
+        letter-spacing: 1px;
+        background-color: #83e27e;
+        border-radius: px; /* Ajusta el valor para modificar la curvatura del marco */
+      }
+      
+      
+      .button-container-2 button {
+        width: 101%;
+        height: 100%;
+        font-family: 'Lato', sans-serif;
+        font-weight: 300;
+        font-size: 20px;
+        letter-spacing: 1px;
+        background: #f96fe9;
+        -webkit-mask: url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/urban-sprite.png");
+        mask: url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/urban-sprite.png");
+        -webkit-mask-size: 3000% 100%;
+        mask-size: 3000% 100%;
+        border: none;
+        color: #ffffff;
+        cursor: pointer;
+        -webkit-animation: ani2 0.7s steps(29) forwards;
+        animation: ani2 0.7s steps(29) forwards;
+        border-radius: 0px; /* Ajusta el valor para modificar la curvatura del botón */
+      }
+      
+      .button-container-2 button:hover {
+        -webkit-animation: ani 0.7s steps(29) forwards;
+        animation: ani 0.7s steps(29) forwards;
+      }
+      
+      
+      .mas {
+        position: absolute;
+        color: #ffffff;
+        text-align: center;
+        width: 101%;
+        font-family: 'Lato', sans-serif;
+        font-weight: 300;
+        position: absolute;
+        font-size: 20px;
+        margin-top: 12px;
+        overflow: hidden;
+      }
+      
+      @-webkit-keyframes ani {
+        from {
+          -webkit-mask-position: 0 0;
+          mask-position: 0 0;
+        }
+        to {
+          -webkit-mask-position: 100% 0;
+          mask-position: 100% 0;
+        }
+      }
+      @keyframes ani {
+        from {
+          -webkit-mask-position: 0 0;
+          mask-position: 0 0;
+        }
+        to {
+          -webkit-mask-position: 100% 0;
+          mask-position: 100% 0;
+        }
+      }
+      @-webkit-keyframes ani2 {
+        from {
+          -webkit-mask-position: 100% 0;
+          mask-position: 100% 0;
+        }
+        to {
+          -webkit-mask-position: 0 0;
+          mask-position: 0 0;
+        }
+      }
+      @keyframes ani2 {
+        from {
+          -webkit-mask-position: 100% 0;
+          mask-position: 100% 0;
+        }
+        to {
+          -webkit-mask-position: 0 0;
+          mask-position: 0 0;
+        }
+      }
+      a {
+        color: #00ff95;
+      }
+
+  </style>
+  <script>
+    // Función para agregar una transición antes de redirigir
+    function redirectToPage(event, url) {
+      event.preventDefault(); // Prevenir la acción predeterminada del navegador
+
+      // Agregar una clase CSS para animar la transición
+      document.body.classList.add('page-transition');
+
+      // Esperar un tiempo suficiente para que la animación se complete
+      setTimeout(function() {
+        window.location.href = url; // Redirigir a la nueva página
+      }, 1000); // Tiempo de espera en milisegundos (1 segundo en este ejemplo)
+    }
+
+    window.addEventListener('DOMContentLoaded', (event) => {
+      const usuarioInput = document.getElementById('usuario');
+      const contraseñaInput = document.getElementById('contraseña');
+      const usuarioErrorMessage = document.createElement('div');
+      const contraseñaErrorMessage = document.createElement('div');
+      usuarioErrorMessage.className = 'error-message';
+      contraseñaErrorMessage.className = 'error-message';
+      usuarioInput.parentNode.insertBefore(usuarioErrorMessage, usuarioInput.nextSibling);
+      contraseñaInput.parentNode.insertBefore(contraseñaErrorMessage, contraseñaInput.nextSibling);
+
+      usuarioInput.addEventListener('input', (event) => {
+        const inputValue = event.target.value;
+        const forbiddenCharacters = /[^a-zA-Z0-9]/;
+        if (forbiddenCharacters.test(inputValue)) {
+          usuarioInput.value = inputValue.replace(forbiddenCharacters, '');
+          usuarioErrorMessage.textContent = 'Solo se permiten letras y números.';
+        } else {
+          usuarioErrorMessage.textContent = '';
+        }
+      });
+
+      contraseñaInput.addEventListener('input', (event) => {
+        const inputValue = event.target.value;
+        const maxLength = 15;
+        if (inputValue.length > maxLength) {
+          contraseñaInput.value = inputValue.slice(0, maxLength);
+          contraseñaErrorMessage.textContent = `Límite de caracteres alcanzado (máximo 15).`;
+        } else {
+          contraseñaErrorMessage.textContent = '';
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="image-container">
+    <img src="arbol.jpg" alt="">
+  </div>
+ 
+  <h1>Beautiful Nails</h1>
+  <h2>Login</h2>
+  <form method="POST" action="login.php">
+  
+    <label for="usuario">Usuario:</label>
+    <input type="text" id="usuario" name="usuario" required>
+    <div class="error-message"></div>
+
+    <label for="contraseña">Contraseña:</label>
+    <input type="password" id="contraseña" name="contraseña" required>
+    <div class="error-message"></div>
+<br>
+    <div class="button-container-2">
+      <span class="mas">Ingresar</span>
+    <button id='work' type="submit" name="Hover">Ingresar</button>
+  </div>
+
+    <hr>
+
+    <h2>¿No tienes una cuenta?</h2>
+    <a href="Registro.html" onclick="redirectToPage(event, 'Registro.html');" class="secondary-link">Registrarse</a>
+    
+    <br> <!-- Agregar un espacio separador entre los botones -->
+    
+    <a href="recuperar_contraseña.html" onclick="redirectToPage(event, 'recuperar_contraseña.html');" class="secondary-link">Olvidé mi contraseña</a>
+  </form>
+</body>
+</html>
