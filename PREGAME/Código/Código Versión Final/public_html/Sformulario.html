@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Menú Lateral con CSS</title>
+   
+    <link rel="stylesheet" href="style.css">
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Montserrat|Montserrat+Alternates|Poppins&display=swap');
+  
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat Alternates', sans-serif;
+  }
+  
+  .fondo {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+      z-index: -1;
+    top: 0;
+    left: 0;
+  }
+  
+  /* Estilos para el encabezado */
+  .encabezado {
+    width: 100%;
+    height: 100px;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  
+  .contenedor {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  .contenedor .btn-menu,
+  .logo {
+    float: left;
+    line-height: 100px;
+  }
+  
+  .contenedor .btn-menu label {
+    color: #fff;
+    font-size: 25px;
+    cursor: pointer;
+  }
+  
+  .logo h1 {
+    color: #fff;
+    font-weight: 400;
+    font-size: 22px;
+    margin-left: 10px;
+  }
+  
+  .contenedor .menu-principal {
+    float: right;
+    line-height: 100px;
+  }
+  
+  .contenedor .menu-principal a {
+    display: inline-block;
+    padding: 15px;
+    line-height: normal;
+    text-decoration: none;
+    color: #fff;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid transparent;
+    font-size: 15px;
+    margin-right: 5px;
+  }
+  
+  .contenedor .menu-principal a:hover {
+    border-bottom: 2px solid #c7c7c7;
+    padding-bottom: 5px;
+  }
+  /* Fin de Estilos para el encabezado */
+  
+  /* Menú lateral */
+  #btn-menu {
+    display: none;
+  }
+  
+  .contenedor-menu {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    transition: all 500ms ease;
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  #btn-menu:checked ~ .contenedor-menu {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .cont-menu {
+    width: 100%;
+    max-width: 250px;
+    background: #1c1c1c;
+    height: 100vh;
+    position: relative;
+    transition: all 500ms ease;
+    transform: translateX(-100%);
+  }
+  
+  #btn-menu:checked ~ .contenedor-menu .cont-menu {
+    transform: translateX(0%);
+  }
+  
+  .cont-menu nav {
+    transform: translateY(15%);
+  }
+  
+  .cont-menu nav a {
+    display: block;
+    text-decoration: none;
+    padding: 20px;
+    color: #c7c7c7;
+    border-left: 5px solid transparent;
+    transition: all 400ms ease;
+  }
+  
+  .cont-menu nav a:hover {
+    border-left: 5px solid #c7c7c7;
+    background: #1f1f1f;
+  }
+  
+  .cont-menu label {
+    position: absolute;
+    right: 5px;
+    top: 10px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+  }
+  /* Fin de Menú lateral */
+   /* Estilos CSS para la presentación */
+   body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    }
+  
+    .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    }
+  
+    .form-container {
+    width: 400px;
+    margin: 3cm auto;
+    }
+  
+    .form-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    }
+  
+    .form-container .name-fields {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    }
+  
+    .form-container .name-fields input {
+    width: calc(200% - 10px);
+    }
+  
+    .form-container .contact-fields {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    }
+  
+    .form-container .contact-fields input {
+    width: calc(50% - 5px);
+    }
+  
+    .radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    }
+  
+    .radio-group label {
+    width: 50%;
+    }
+  
+    .submit-btn {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    }
+  
+    .error-input {
+    border: 1px solid red;
+    }
+  
+    .error-message {
+    color: red;
+    margin-top: 5px;
+    }
+  
+    .titulo {
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%); /* Center the element horizontally */
+  padding: 10px 20px; /* Add some padding for better visibility */
+  font-size: 20px; /* Adjust the font size as needed */
+  z-index: 1; /* Add a z-index to ensure the title is on top of other elements */
+}
+    /* Estilos generales */
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    }
+    
+    .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    }
+    
+    .form-container {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 5px;
+    }
+    
+    form {
+    display: grid;
+    gap: 10px;
+    }
+    
+    label {
+    font-weight: bold;
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    }
+    
+    .input-error {
+    border-color: #ff0000;
+    }
+    
+    .error-message {
+    color: #ff0000;
+    font-size: 12px;
+    margin-top: 5px;
+    }
+    
+    .submit-btn {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    }
+    
+  
+  
+  .contact-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  
+  .name-fields input,
+  .contact-fields input {
+    grid-column: span 2;
+  }
+  
+  .contact-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    }
+    .date-fields {
+  display: flex;
+  gap: 10px;
+}
+
+.date-fields label,
+.date-fields select {
+  flex: 1;
+}
+
+    
+     </style>
+    <script>
+      
+      function verificarDisponibilidad() {
+    var nombre = document.getElementById('nombre').value.trim();
+    var apellido = document.getElementById('apellido').value.trim();
+    var direccion = document.getElementById('direccion').value.trim();
+    var email = document.getElementById('email').value.trim();
+
+    if (nombre === '') {
+        mostrarMensajeError('nombre', 'El campo Nombre es requerido.');
+        return false;
+    }
+
+    if (apellido === '') {
+        mostrarMensajeError('apellido', 'El campo Apellido es requerido.');
+        return false;
+    }
+
+    if (direccion === '') {
+        mostrarMensajeError('direccion', 'El campo Dirección es requerido.');
+        return false;
+    }
+
+    if (email === '') {
+        mostrarMensajeError('email', 'El campo Email es requerido.');
+        return false;
+    } else if (!validarEmail(email)) {
+        mostrarMensajeError('email', 'Ingresa un email válido.');
+        return false;
+    }
+
+    // Agregar la llamada a la función de verificación de longitud del teléfono
+    if (!verificarLongitudTelefono()) {
+        return false;
+    }
+
+    // Resto del código para validaciones adicionales...
+
+    return true; // Permitir que se envíe el formulario si los campos son válidos
+}
+
+
+
+    function mostrarMensajeError(campo, mensaje) {
+      var errorElement = document.getElementById(campo + '-error');
+      var campoElement = document.getElementById(campo);
+
+      if (!errorElement) {
+        errorElement = document.createElement('p');
+        errorElement.id = campo + '-error';
+        errorElement.className = 'error-message';
+        errorElement.innerHTML = mensaje;
+
+        campoElement.parentNode.insertBefore(errorElement, campoElement.nextSibling);
+      } else {
+        errorElement.innerHTML = mensaje;
+      }
+
+      campoElement.classList.add('error-input');
+    }
+
+    function quitarMensajeError(campo) {
+    var errorElement = document.getElementById(campo + '-error');
+    var campoElement = document.getElementById(campo);
+
+    if (errorElement) {
+        errorElement.innerHTML = '';
+    }
+
+    campoElement.classList.remove('error-input');
+}
+
+
+    function bloquearCaracteresInvalidos(event) {
+      var key = event.key;
+      var regex = /^[a-zA-Z\s]*$/;
+
+      if (!regex.test(key) && !event.ctrlKey) {
+        event.preventDefault();
+        mostrarMensajeError(event.target.id, 'Solo se permiten letras y espacios.');
+      }
+    }
+
+    function bloquearCaracteresNoNumericos(event) {
+      var key = event.key;
+      var regexNumeros = /^[0-9]+$/;
+
+      if (!regexNumeros.test(key) && !event.ctrlKey) {
+        event.preventDefault();
+        mostrarMensajeError(event.target.id, 'Solo se permiten números.');
+      }
+    }
+    function verificarLongitudTelefono() {
+    var telefono = document.getElementById('telefono').value.trim();
+    if (telefono.length !== 10) {
+        mostrarMensajeError('telefono', 'El número de teléfono debe contener exactamente 10 dígitos.');
+        return false;
+    }
+    return true;
+}
+
+  </script>
+</head>
+<body>
+  
+</div>
+<div class="slider-frame">
+  <ul>
+      <li><img src="slider1.jpg" alt=""></li>
+      <li><img src="slider2.jpg" alt=""></li>
+      <li><img src="slider3.jpg" alt=""></li>
+      <li><img src="slider4.jpg" alt=""></li>
+  </ul>
+</div>
+    <div class="titulo">
+            <h1>Registro de clientes</h1>
+            </div>
+    <header class="encabezado">
+        <div class="contenedor">
+            <div class="btn-menu">
+                <label for="btn-menu">☰</label>
+            </div>
+            <div class="logo">
+                <h1>Beautiful Nails</h1>
+            </div>
+            <nav class="menu-principal">
+                <a href="index.html">Salir</a>
+            </nav>
+        </div>
+    </header>
+    <div class="fondo"></div>
+    <!-- Barra lateral -->
+    <input type="checkbox" id="btn-menu">
+    <div class="contenedor-menu">
+        <div class="cont-menu">
+            <nav>
+
+                <a href="#">Registrar Cliente</a>
+                <a href="Sclientes.html">Clientes</a>
+                <a href="empleados.html">Empleados</a>
+                <a href="codigo.html">Código de seguridad</a>
+            </nav>
+            <label for="btn-menu">✖️</label>
+        </div>
+    </div>
+    <div class="container">
+        <div class="form-container">
+            <form method="POST" action="Sguardar_datos.php" onsubmit="return verificarDisponibilidad()" id="formulario">
+                <div class="name-fields">
+
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" required onkeydown="bloquearCaracteresInvalidos(event)" oninput="quitarMensajeError('nombre')">
+                </div>
+                <div class="name-fields2">
+                    <label for="apellido">Apellido:</label>
+                    <input type="text" id="apellido" name="apellido" required onkeydown="bloquearCaracteresInvalidos(event)" oninput="quitarMensajeError('apellido')">
+                    
+                </div>
+    
+
+                <div class="contact-fields">
+                  <div>
+                      <label for="telefono">Teléfono:</label>
+                  </div>
+                  <div>
+                      <input type="text" id="telefono" name="telefono" required onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.ctrlKey" oninput="quitarMensajeError('telefono')" minlength="10" maxlength="10">
+                  </div>
+              </div>
+              
+<div>
+  <label for="direccion">Dirección:</label>
+  <input type="text" id="direccion" name="direccion" required>
+</div>
+    
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="date-fields">
+                  <label for="mes">Mes:</label>
+                  <select id="mes" name="mes" required>
+                      <!-- Aquí generamos las opciones del mes actual de forma interactiva -->
+                      <script>
+                          var meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+                          var fecha = new Date();
+                          var mesActual = fecha.getMonth(); // Obtenemos el número del mes actual (0 - Enero, 1 - Febrero, ..., 11 - Diciembre)
+              
+                          for (var i = mesActual; i < meses.length; i++) {
+                              var option = document.createElement('option');
+                              option.value = i + 1; // Sumamos 1 al índice porque los valores de los meses empiezan desde 1 en el atributo "value"
+                              option.text = meses[i];
+                              document.getElementById('mes').appendChild(option);
+                          }
+                      </script>
+                  </select>
+              
+                  <label for="dia">Día:</label>
+                  <select id="dia" name="dia" required>
+                      <!-- JavaScript para generar las opciones del día del mes seleccionado de forma interactiva -->
+                      <script>
+                          document.getElementById('mes').addEventListener('change', function() {
+                              var fecha = new Date();
+                              var mesSeleccionado = parseInt(this.value) - 1;
+                              var ultimoDiaMesSeleccionado = new Date(fecha.getFullYear(), mesSeleccionado + 1, 0).getDate();
+                              
+                              // Limpiamos las opciones anteriores del select
+                              var selectDia = document.getElementById('dia');
+                              selectDia.innerHTML = "";
+              
+                              // Generamos las nuevas opciones del día
+                              for (var i = 1; i <= ultimoDiaMesSeleccionado; i++) {
+                                  var option = document.createElement('option');
+                                  option.value = i;
+                                  option.text = i;
+                                  selectDia.appendChild(option);
+                              }
+                          });
+                          
+                          // Generamos las opciones del día para el mes actual al cargar la página
+                          var fecha = new Date();
+                          var mesActual = fecha.getMonth();
+                          var diaActual = fecha.getDate();
+                          var ultimoDiaMesActual = new Date(fecha.getFullYear(), mesActual + 1, 0).getDate();
+              
+                          for (var i = diaActual; i <= ultimoDiaMesActual; i++) {
+                              var option = document.createElement('option');
+                              option.value = i;
+                              option.text = i;
+                              document.getElementById('dia').appendChild(option);
+                          }
+                      </script>
+                  </select>
+              </div>
+              
+
+
+                <label for="dia">Hora:</label>
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="hora" value="11am" required>11:00 AM
+                    </label>
+                    <label>
+                        <input type="radio" name="hora" value="12pm">12:00 PM
+                    </label>
+                    <label>
+                        <input type="radio" name="hora" value="1pm">1:00 PM
+                    </label>
+                    <label>
+                        <input type="radio" name="hora" value="2pm">2:00 PM
+                    </label>
+                    <label>
+                        <input type="radio" name="hora" value="3pm">3:00 PM
+                    </label>
+                    <label>
+                        <input type="radio" name="hora" value="4pm">4:00 PM
+                    </label>
+                    <label>
+                        <input type="radio" name="hora" value="5pm">5:00 PM
+                    </label>
+                    <label>
+                        <input type="radio" name="hora" value="6pm">6:00 PM
+                    </label>
+                    <label>
+                        <input type="radio" name="hora" value="7pm">7:00 PM
+                    </label>
+                    <label>
+                    <input type="radio" name="hora" value="8pm">8:00 PM
+                    </label>
+                </div>
+    
+                <input type="submit" class="submit-btn" value="Enviar">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
